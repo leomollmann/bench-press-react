@@ -5,7 +5,7 @@
   }
 
   .main-background {
-    @apply bg-[url(../public/Background.png)] bg-no-repeat bg-cover h-screen;
+    @apply bg-[url(../public/Background.png)] bg-no-repeat bg-cover h-screen rounded-2xl overflow-hidden;
     background-position-y: -80px;
     position: relative;
     transition: all 0.5s ease-in-out;
@@ -24,11 +24,20 @@
   }
 
   .chat-input {
-    @apply bg-white rounded-full h-14 px-5 text-lg text-darkGray font-normal;
+    @apply bg-white rounded-full h-14 px-5 text-lg text-darkGray font-normal absolute bottom-12 left-8 right-8;
     box-shadow: 0 4px 8px rgba(215, 225, 237, 0.69);
 
     &:placeholder {
       @apply text-lightGray font-light;
+    }
+  }
+
+  .ai-persona {
+    @apply flex flex-col items-center gap-4 justify-center z-10 -translate-y-28;
+    transition: transform 0.6s ease-in-out;
+
+    &.to-center {
+      --tw-translate-y: calc(-50vh + 50%);
     }
   }
 }

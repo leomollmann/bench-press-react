@@ -23,12 +23,18 @@ function Home() {
         </div>
 
         <div className='focus-background'>
-          <div className='container py-4'>
+          <div className='container py-12 h-full absolute flex flex-col justify-end'>
+            <div className={`cursor-pointer p-1 transition-opacity absolute top-12 ${!expanded && 'opacity-0'}`} onClick={() => setExpanded(false)}>
+              <Image src="/ArrowDown.png" width={16} height={8} alt="arrow down"/>
+            </div>
+            <div className={`ai-persona ${expanded && 'to-center'}`}>
+              <Image src="/AI.png" width={80} height={80} alt="AI persona"/>
+              <h2 className='text-primary text-xl font-semibold w-52 text-center'>How can I help you today?</h2>
+            </div>
             <input 
               className='chat-input'
               placeholder='Type something'
-              onFocus={() => setExpanded(true)} 
-              onBlur={() => setExpanded(false)} 
+              onFocus={() => setExpanded(true)}
             />
           </div>
         </div>
