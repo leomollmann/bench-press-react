@@ -1,4 +1,5 @@
 import Question from "@/entities/Question";
+import currency from "@/utils/currency";
 
 type Props = {
   question: Question
@@ -19,8 +20,9 @@ function Message({ question, isLatest }: Props) {
                 className="h-[237px] w-[179px] shrink-0 rounded-xl relative" 
                 style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_BACKEND}/static/${x.id}.png)` }}
               >
-                <div className="absolute left-2 bottom-2 w-[140px] bg-white bg-opacity-85 text-secondary font-semibold py-2 px-3 rounded-xl">
-                  {x.names[0]}
+                <div className="absolute left-2 bottom-2 w-[140px] bg-white bg-opacity-85 py-2 px-3 rounded-xl">
+                  <p className="text-secondary font-semibold">{x.names[0]}</p>
+                  <p className="text-darkGray text-xs font-normal">{currency(x.price)}</p>
                 </div>
               </div>
             ))}

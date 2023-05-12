@@ -62,20 +62,23 @@ function Home({ user, history }: Props) {
           <h1 className='text-2xl font-semibold'>{user.name}</h1>
           <span className='mt-5 rounded-full px-4 py-1 bg-[#00000020] flex gap-2 items-center'>
             <p className='text-md'>Room {user.room}</p>
-            <Image src="/SendWhite.png" height={14} width={14} alt="send icon" style={{ height: 14 }}/>
+            <Image src="/SendWhite.svg" height={14} width={14} alt="send icon" style={{ height: 14 }}/>
           </span>
         </div>
 
         <div className='focus-background'>
           <div className='container pt-20 pb-32 h-full absolute flex flex-col justify-end'>
-            <div className={`cursor-pointer p-1 transition-opacity absolute top-12 ${!expanded && 'opacity-0'}`} onClick={() => setExpanded(false)}>
-              <Image src="/ArrowDown.png" width={16} height={8} alt="arrow down"/>
+            <div className={`cursor-pointer transition-opacity absolute top-12 left-8 right-8 ${!expanded && 'opacity-0'}`}>
+              <span className='absolute left-0 top-1 p-1' onClick={() => setExpanded(false)}>
+                <Image src="/ArrowDown.png" width={16} height={8} alt="arrow down"/>
+              </span>
+              {messages.length > 0 ? <p className='text-primary text-md font-semibold text-center font-inter'>How can I help you today?</p> : null}
             </div>
 
             {messages.length === 0 || !expanded ? (
               <div className={`ai-persona ${expanded && 'to-center'}`}>
                 <Image src="/AI.png" width={80} height={80} alt="AI persona"/>
-                <h2 className='text-primary text-xl font-semibold w-52 text-center'>How can I help you today?</h2>
+                <h2 className='text-primary text-xl font-semibold w-52 text-center font-inter'>How can I help you today?</h2>
               </div> 
             ) : null}
             
@@ -94,7 +97,7 @@ function Home({ user, history }: Props) {
             <div className='chat-input'>
               {chat ? (
                 <span className='absolute right-4 top-4 p-1' onClick={sendMessage}>
-                  <Image src="/Send.png" width={20} height={20} alt="Send message"/>
+                  <Image src="/Send.svg" width={20} height={20} alt="Send message"/>
                 </span>
               ) : null}
               <input 
