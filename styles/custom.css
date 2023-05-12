@@ -1,14 +1,14 @@
 @layer components {
   .focus-background {
-    @apply bg-background rounded-t-2xl rounded-r-2xl absolute bottom-0 left-0 right-0 h-72;
-    transition: all 0.5s ease-in-out;
+    @apply bg-background rounded-t-2xl rounded-r-2xl absolute bottom-0 left-0 right-0 h-72 flex justify-center;
+    transition: all 0.5s ease;
   }
 
   .main-background {
     @apply bg-[url(../public/Background.png)] bg-no-repeat bg-cover h-screen rounded-2xl overflow-hidden;
     background-position-y: -80px;
     position: relative;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease;
 
     &.expand {
       background-position-y: -140px;
@@ -24,20 +24,41 @@
   }
 
   .chat-input {
-    @apply bg-white rounded-full h-14 px-5 text-lg text-darkGray font-normal absolute bottom-12 left-8 right-8;
+    @apply absolute bottom-12 left-8 right-8;
+
+    > input {
+      @apply bg-white rounded-full h-14 pl-5 pr-12 text-lg text-darkGray font-normal outline-none w-full;
+      box-shadow: 0 4px 8px rgba(215, 225, 237, 0.69);
+
+      &:placeholder {
+        @apply text-lightGray font-light;
+      }
+    }
+  }
+
+  .chat-card {
+    @apply py-5 bg-white rounded-3xl flex flex-col gap-4 font-inter relative;
     box-shadow: 0 4px 8px rgba(215, 225, 237, 0.69);
 
-    &:placeholder {
-      @apply text-lightGray font-light;
+    div::-webkit-scrollbar {
+      display: none;
     }
   }
 
   .ai-persona {
-    @apply flex flex-col items-center gap-4 justify-center z-10 -translate-y-28;
-    transition: transform 0.6s ease-in-out;
+    @apply flex flex-col items-center gap-4 justify-center z-10 -translate-y-8;
+    transition: transform 0.6s ease;
 
     &.to-center {
       --tw-translate-y: calc(-50vh + 50%);
+    }
+  }
+
+  .message-list {
+    @apply flex flex-col gap-4 overflow-auto;
+
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 }
